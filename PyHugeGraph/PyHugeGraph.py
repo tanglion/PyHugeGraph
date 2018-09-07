@@ -10,20 +10,13 @@
                    2018/08/23: v1
 -------------------------------------------------
 """
-
+from Response import Response
 import requests
 import json
-
 import sys
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
-
-
-class Response():
-    def __init__(self, status_code, result):
-        self.status_code = status_code
-        self.response = result
 
 
 class HugeGraph():
@@ -31,13 +24,13 @@ class HugeGraph():
     HugeGraph restful API
     """
 
-    def __init__(self, host):
+    def __init__(self, host,graph_name):
         self.host = ""
         if host.startswith("http://"):
             self.host = host
         else:
             self.host = "http://" + host
-        self.graph = "hugegraph"
+        self.graph = graph_name
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
             'Content-Type': 'application/json'
@@ -95,7 +88,7 @@ class HugeGraph():
         res = Response(response.status_code, response.content)
         return res
 
-    def CreatePropertyKey(self, property_name, dataType, cardinality):
+    def CreatePropertyKey(self, propertykey_name, dataType, cardinality):
         """
         创建一个propertykey
         :param property_name:
@@ -983,7 +976,7 @@ class HugeGraph():
         return res
 
 if __name__ == '__main__':
-    hg = HugeGraph("10.14.139.15:8090")
+    hg = HugeGraph("10.14.139.15:8090","hugegraph")
     # print hg.GetAllGraphs().response
     # print hg.GetVersion().response
     # print hg.GetGraphInfo().response
