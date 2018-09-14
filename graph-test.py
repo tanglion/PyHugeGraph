@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     # t = HelloWorldExample("bolt://localhost:7687","neo4j","neo4jcdc")
     # t.print_greeting("123")
-    hg = PyHugeGraph.HugeGraph("http://10.14.139.15:8090","hugegraph")
+    hg = PyHugeGraph.HugeGraph("http://loaclhost:8090","hugegraph")
     print hg.graph
     print hg.GetAllGraphs().response
     print hg.GetVertexById("123").response
