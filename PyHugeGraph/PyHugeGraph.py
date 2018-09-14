@@ -98,7 +98,7 @@ class HugeGraph():
         """
         url = self.host + "/graphs" + "/" + self.graph + "/schema/propertykeys"
         propertykeys = {
-            "name": property_name,
+            "name": propertykey_name,
             "data_type": dataType,
             "cardinality": cardinality
 
